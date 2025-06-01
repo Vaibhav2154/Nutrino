@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #DDF6D2, #DDF6D2); /* Green gradient */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .register-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+      color: #328E6E;
+    }
+
+    .register-container h2 {
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    .input-field {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #328E6E;
+      font-size: 16px;
+    }
+
+    .input-field input::placeholder {
+      color: #328E6E;
+    }
+
+    .register-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      background: #90C67C;
+      color: #2e7d32;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .register-btn:hover {
+      background: #E1EEBC;
+    }
+
+    .login-link {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .login-link a {
+      color: #328E6E;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Register</h2>
+    <div class="input-field">
+      <input type="text" placeholder="Username" required />
+    </div>
+    <div class="input-field">
+      <input type="email" placeholder="Email" required />
+    </div>
+    <div class="input-field">
+      <input type="password" placeholder="Password" required />
+    </div>
+    <button class="register-btn">Register</button>
+    <div class="login-link">
+      Already have an account? <a href="index.html">Login</a>
+    </div>
+  </div>
+</body>
+</html>
