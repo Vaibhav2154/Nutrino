@@ -1,3 +1,4 @@
+<!-- Full HTML code with calendar integrated into the right side -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +40,7 @@
 
     .container {
       display: flex;
+      justify-content: space-between;
       padding: 2rem;
     }
 
@@ -164,6 +166,56 @@
       border-radius: 25px;
       cursor: pointer;
     }
+
+    .calendar {
+      background-color: #B0DB9C;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 35%;
+      color: #000;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .calendar select {
+      background: #CAE8BD;
+      border: none;
+      font-size: 1rem;
+      padding: 0.3rem;
+      border-radius: 10px;
+      color: #000;
+    }
+
+    .calendar-days, .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .calendar-days button {
+      background: none;
+      border: none;
+      padding: 0.6rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .calendar-days button:hover {
+      background-color: #ff7b00;
+      color: white;
+    }
+
+    .calendar-days .today {
+      background-color: #4CAF50;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -225,6 +277,82 @@
 
       <button class="add-button">Add Food</button>
     </div>
+
+    <div class="calendar">
+      <div class="calendar-header">
+        <select id="year"></select>
+        <select id="month"></select>
+      </div>
+      <div class="calendar-weekdays">
+        <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+      </div>
+      <div class="calendar-days" id="calendar-days"></div>
+    </div>
   </div>
+
+  <script>
+    const yearSelect = document.getElementById('year');
+    const monthSelect = document.getElementById('month');
+    const calendarDays = document.getElementById('calendar-days');
+
+    for (let y = 2025; y <= 2100; y++) {
+      const option = document.createElement('option');
+      option.value = y;
+      option.text = y;
+      yearSelect.add(option);
+    }
+
+    const monthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    monthNames.forEach((m, idx) => {
+      const option = document.createElement('option');
+      option.value = idx;
+      option.text = m;
+      monthSelect.add(option);
+    });
+
+    function renderCalendar(year, month) {
+      calendarDays.innerHTML = '';
+      const firstDay = new Date(year, month, 1).getDay();
+      const totalDays = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        calendarDays.appendChild(empty);
+      }
+
+      for (let d = 1; d <= totalDays; d++) {
+        const btn = document.createElement('button');
+        btn.innerText = d;
+
+        const today = new Date();
+        if (
+          d === today.getDate() &&
+          year === today.getFullYear() &&
+          month === today.getMonth()
+        ) {
+          btn.classList.add('today');
+        }
+
+        calendarDays.appendChild(btn);
+      }
+    }
+
+    const now = new Date();
+    yearSelect.value = now.getFullYear();
+    monthSelect.value = now.getMonth();
+    renderCalendar(now.getFullYear(), now.getMonth());
+
+    yearSelect.addEventListener('change', () => {
+      renderCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value));
+    });
+
+    monthSelect.addEventListener('change', () => {
+      renderCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value));
+    });
+  </script>
 </body>
 </html>
