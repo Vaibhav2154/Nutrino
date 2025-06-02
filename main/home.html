@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #ECFAE5;
+      color: #000000;
+    }
+
+    .dashboard {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background-color: #CAE8BD;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .dashboard img {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #748E63;
+      font-weight: bold;
+    }
+
+    .container {
+      display: flex;
+      padding: 2rem;
+    }
+
+    .summary {
+      background-color: #B0DB9C;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 50%;
+    }
+
+    .summary h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .summary .ring {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(#ff7b00 240deg, #e0e0e0 0deg);
+      margin: 0 auto;
+    }
+
+    .ring-text {
+      position: absolute;
+      top: 110%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      text-align: center;
+    }
+
+    .ring-text p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .ring-text h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .row div {
+      text-align: center;
+    }
+
+    .row h3 {
+      margin: 0;
+      color: #ff7b00;
+    }
+
+    .row p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    .macros {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .macro {
+      flex: 1;
+    }
+
+    .bar-container {
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      height: 8px;
+      width: 100%;
+      margin-bottom: 0.3rem;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    .macro label {
+      font-size: 0.9rem;
+    }
+
+    .macro small {
+      display: block;
+      color: #777;
+      font-size: 0.75rem;
+    }
+
+    .carbs .bar {
+      width: 30%;
+      background-color: #2f80ed;
+    }
+
+    .protein .bar {
+      width: 9%;
+      background-color: #eb5757;
+    }
+
+    .fat .bar {
+      width: 33%;
+      background-color: #f2c94c;
+    }
+
+    .add-button {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background-color: #ff7b00;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="dashboard">
+    <a href="home.html"><img src="../images/logo.png" alt="Logo"></a>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="history.html">History</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="summary">
+      <h2>Calories Tracker</h2>
+      <div class="ring">
+        <div class="ring-text">
+          <p>Remaining</p>
+          <h1>1685</h1>
+          <p>kcal</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <h3>815</h3>
+          <p>Eaten</p>
+        </div>
+        <div>
+          <h3>289</h3>
+          <p>Burned</p>
+        </div>
+      </div>
+
+      <div class="macros">
+        <div class="macro carbs">
+          <div class="bar-container">
+            <div class="bar"></div>
+          </div>
+          <label>Carbs</label>
+          <small>60/200g</small>
+        </div>
+
+        <div class="macro protein">
+          <div class="bar-container">
+            <div class="bar"></div>
+          </div>
+          <label>Protein</label>
+          <small>13/150g</small>
+        </div>
+
+        <div class="macro fat">
+          <div class="bar-container">
+            <div class="bar"></div>
+          </div>
+          <label>Fat</label>
+          <small>20/60g</small>
+        </div>
+      </div>
+
+      <button class="add-button">Add Food</button>
+    </div>
+  </div>
+</body>
+</html>

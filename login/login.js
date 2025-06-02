@@ -35,7 +35,7 @@ signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    alert("loging in...");
+    window.location.href = "../main/home.html";
     // ...
   })
   .catch((error) => {
